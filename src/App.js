@@ -6,7 +6,7 @@ import Post from "./components/Post";
 import Posts from "./components/Posts";
 
 const App = () => {
-  const token = localStorage.getItem('accessToken')
+  const token = localStorage.getItem('accessToken');
 
   if(!token) {
     return <Login/>
@@ -17,7 +17,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<MainPage/>}/>
       <Route path="/posts" element={<Posts/>}/>
-      <Route path="/posts/create" element={<CreatePost/>}/>
+      <Route path="/create-post" element={<CreatePost/>}/>
       <Route path="/posts/:id" element={<Post/>}/>
     </Routes>
     </BrowserRouter>
