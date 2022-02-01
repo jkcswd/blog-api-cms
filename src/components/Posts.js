@@ -35,6 +35,7 @@ const Posts = () => {
   const handlePublish = (e) => {
     const newPosts = posts.map(post => {
       if(post._id === e.target.value){
+        // Set state in map to get value for post's isPublished property.
         setPostToUpdate({ id: e.target.value, isPublished: !post.isPublished });
         return { ...post, isPublished: !post.isPublished };
       }
