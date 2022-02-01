@@ -19,7 +19,8 @@ const Login = () => {
         const tokenData = await response.json()
 
         if(tokenData.token) {
-          localStorage.setItem('accessToken', tokenData.token)
+          localStorage.setItem('accessToken', tokenData.token);
+          localStorage.setItem('userDetails', JSON.stringify(tokenData.user));
           window.location.reload()
         }else {
           console.error('Incorrect login details.')
