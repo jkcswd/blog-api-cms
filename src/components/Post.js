@@ -3,10 +3,10 @@ import { useEffect, useState } from "react/cjs/react.development";
 
 const Post = () => {
   const location = useLocation();
-  const id = location.pathname.split('/')[2]
-  const [post, setPost] = useState(false);
-  const [comments, setComments] = useState([])
+  const id = location.pathname.split('/')[2];
 
+  const [post, setPost] = useState(false);
+  const [comments, setComments] = useState([]);
   useEffect(() => {
     const fetchPost = async () => {
       const response = await fetch(`http://localhost:8000/api/post/${id}`, {mode:'cors'});
@@ -23,7 +23,36 @@ const Post = () => {
       setComments(comments);
     }
     fetchComments();
-  },[id]);
+  // id variable not needed in dependency array for rerender
+  // eslint-disable-next-line
+  },[]);
+
+  const [commentToDelete, setCommentToDelete] = useState(false);
+  useEffect(() => {
+    if(commentToDelete) {
+      const sendDeleteToApi = async () => {
+        await fetch(`http://localhost:8000/api/comment/${commentToDelete}`, {
+          method: 'DELETE',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.accessToken
+          }
+        });
+      }
+      sendDeleteToApi();
+    }
+  }, [commentToDelete]);
+
+  const deleteComment = (e) => {
+    setCommentToDelete(e.target.value);
+
+    const newComments = comments.filter(comment => {
+      return comment._id !== e.target.value
+    });
+
+    setComments(newComments)
+  }
 
   return (
     <div className="Post">
@@ -38,10 +67,10 @@ const Post = () => {
             <p>{comment.comment}</p>
             <p>{comment.user.username}</p>
             <p>{comment.datePublished}</p>
+            <button value={comment._id} onClick={deleteComment}>Delete</button>
           </div>
         )
       })
-
       }
     </div>
   );
