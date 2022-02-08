@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const Post = () => {
   const location = useLocation();
@@ -56,6 +58,7 @@ const Post = () => {
 
   return (
     <div className="Post">
+      <Header/>
       <h1>{post.title}</h1>
       <p>{post.text}</p>
       <p>{post.isPublished && 'PUBLISHED'}</p>
@@ -72,6 +75,7 @@ const Post = () => {
         )
       })
       }
+      <Footer/>
     </div>
   );
 }

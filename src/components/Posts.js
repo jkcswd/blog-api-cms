@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -48,6 +50,7 @@ const Posts = () => {
 
   return (
     <div className="Posts">
+      <Header/>
       <h1>Posts</h1>
        {posts.map(post => {
          return(
@@ -62,6 +65,7 @@ const Posts = () => {
             </div>
           )
        })}
+       <Footer/>
     </div>
   );
 }

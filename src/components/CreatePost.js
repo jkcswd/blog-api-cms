@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react/cjs/react.development";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const CreatePost = () => {
   const user = JSON.parse(localStorage.userDetails)._id;
@@ -63,12 +65,14 @@ const CreatePost = () => {
 
   return (
     <div className="CreatePost">
+      <Header/>
       <form method="post" onSubmit={handleSubmit}>
         <input type="text" value={title} name="title" onChange={handleTitleChange}/>
         <input type="text" value={text} name="text" onChange={handleTextChange}/>
         <input type="checkbox" value={isPublished} name="published" onChange={handlePublishedChange}/>
         <input type="submit"/>
       </form>
+      <Footer/>
     </div>
   );
 }

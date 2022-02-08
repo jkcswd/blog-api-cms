@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const Login = () => {
   const [loginDetails, setLoginDetails] = useState(false);
@@ -50,11 +52,13 @@ const Login = () => {
 
   return (
     <div className="Login">
+      <Header/>
       <form onSubmit={handleSubmit}>
         <input type="text" value={username} onChange={handleUserChange}/>
         <input type="password" value={password} onChange={handlePasswordChange}/>
         <input type="submit"/>
       </form>
+      <Footer/>
     </div>
   );
 }
