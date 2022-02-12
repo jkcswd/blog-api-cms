@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Footer from "./Footer";
 import Header from "./Header";
+import '../styles/Post.css'
 
 const Post = () => {
   const location = useLocation();
@@ -59,22 +60,25 @@ const Post = () => {
   return (
     <div className="Post">
       <Header/>
-      <h1>{post.title}</h1>
-      <p>{post.text}</p>
-      <p>{post.isPublished && 'PUBLISHED'}</p>
-      <p>{!post.isPublished && 'UNPUBLISHED'}</p>
-      <h2>Comments</h2>
-      {comments.map(comment => {
-        return(
-          <div key={comment._id}>
-            <p>{comment.comment}</p>
-            <p>{comment.user.username}</p>
-            <p>{comment.datePublished}</p>
-            <button value={comment._id} onClick={deleteComment}>Delete</button>
-          </div>
-        )
-      })
-      }
+      <div className="post-content">
+        <h1 className="post-title">{post.title}</h1>
+        <p>{post.isPublished && '(PUBLISHED)'}</p>
+        <p>{!post.isPublished && '(UNPUBLISHED)'}</p>
+        <p>{post.text}</p>
+        <div className="comments">
+          <h2 className="comments-title">Comments</h2>
+          {comments.map(comment => {
+            return(
+              <div className="comment" key={comment._id}>
+                <p>{comment.comment}</p>
+                <p>By: {comment.user.username} Date: {comment.datePublished}</p>
+                <button className="button" value={comment._id} onClick={deleteComment}>Delete</button>
+              </div>
+            )
+          })
+          }
+        </div>
+      </div>
       <Footer/>
     </div>
   );
