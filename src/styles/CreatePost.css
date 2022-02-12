@@ -1,0 +1,27 @@
+.CreatePost {
+  height: 100%;
+}
+
+.post-form {
+  height: 100%;
+}
+
+.post-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.post-text {
+  resize: none;
+  height: 40rem;
+  width: 40rem;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
