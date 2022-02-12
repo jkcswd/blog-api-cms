@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
-import Header from "./Header";
+import '../styles/Login.css'
 
 const Login = () => {
   const [loginDetails, setLoginDetails] = useState(false);
@@ -10,7 +10,7 @@ const Login = () => {
   useEffect(()=> {
     const getJWT = async () =>{
       if(loginDetails) {
-        const response = await fetch('http://localhost:8000/api/auth/', {
+        const response = await fetch('https://powerful-depths-39238.herokuapp.com/api/auth/', {
           method: 'POST',
           mode: 'cors',
           headers: {
@@ -25,7 +25,7 @@ const Login = () => {
           localStorage.setItem('userDetails', JSON.stringify(tokenData.user));
           window.location.reload()
         }else {
-          console.error('Incorrect login details.')
+          alert('Incorrect login details.')
         }
       }
     }
@@ -52,12 +52,16 @@ const Login = () => {
 
   return (
     <div className="Login">
-      <Header/>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={username} onChange={handleUserChange}/>
-        <input type="password" value={password} onChange={handlePasswordChange}/>
-        <input type="submit"/>
-      </form>
+      <div className="login-content">
+        <h1 className="login-title">Login</h1>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <label htmlFor="user">User: </label>
+          <input type="text" value={username} id="user" onChange={handleUserChange}/>
+          <label htmlFor="password">Password: </label>
+          <input type="password" value={password} id="password" onChange={handlePasswordChange}/>
+          <input className="button" type="submit" value="Login"/>
+        </form>
+      </div>
       <Footer/>
     </div>
   );

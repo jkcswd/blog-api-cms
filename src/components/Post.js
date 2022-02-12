@@ -12,7 +12,7 @@ const Post = () => {
   const [comments, setComments] = useState([]);
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await fetch(`http://localhost:8000/api/post/${id}`, {mode:'cors'});
+      const response = await fetch(`https://powerful-depths-39238.herokuapp.com/api/post/${id}`, {mode:'cors'});
       const post = await response.json();
   
       setPost(post);
@@ -20,7 +20,7 @@ const Post = () => {
     fetchPost();
 
     const fetchComments = async () => {
-      const response = await fetch(`http://localhost:8000/api/post/${id}/comments`, {mode:'cors'});
+      const response = await fetch(`https://powerful-depths-39238.herokuapp.com/api/post/${id}/comments`, {mode:'cors'});
       const comments = await response.json();
   
       setComments(comments);
@@ -34,7 +34,7 @@ const Post = () => {
   useEffect(() => {
     if(commentToDelete) {
       const sendDeleteToApi = async () => {
-        await fetch(`http://localhost:8000/api/comment/${commentToDelete}`, {
+        await fetch(`https://powerful-depths-39238.herokuapp.com/api/comment/${commentToDelete}`, {
           method: 'DELETE',
           mode: 'cors',
           headers: {

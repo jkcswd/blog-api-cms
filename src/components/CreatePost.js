@@ -14,7 +14,7 @@ const CreatePost = () => {
   useEffect(() => {
     const sendPost = async () => {
       if(postDetails) {
-        await fetch('http://localhost:8000/api/post/', {
+        await fetch('https://powerful-depths-39238.herokuapp.com/api/post/', {
           method: 'POST',
           mode: 'cors',
           headers: {

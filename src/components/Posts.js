@@ -8,7 +8,7 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch('http://localhost:8000/api/post', {mode:'cors'});
+      const response = await fetch('https://powerful-depths-39238.herokuapp.com/api/post', {mode:'cors'});
       const posts = await response.json();
   
       setPosts(posts);
@@ -20,7 +20,7 @@ const Posts = () => {
   useEffect(() => {
     if(postToUpdate) {
       const updatePostsByApi = async () => {
-        await fetch(`http://localhost:8000/api/post/${postToUpdate.id}`, {
+        await fetch(`https://powerful-depths-39238.herokuapp.com/api/post/${postToUpdate.id}`, {
           method: 'PATCH',
           mode: 'cors',
           headers: {
