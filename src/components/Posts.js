@@ -52,19 +52,19 @@ const Posts = () => {
     <div className="Posts">
       <Header/>
       <h1>Posts</h1>
-       {posts.map(post => {
-         return(
-            <div key={post._id}>
-              <Link  to={'/posts/' + post._id}>
-                <h2>{post.title}</h2>
-                <p>{post.text}</p>
-                <p>{post.isPublished && 'Published'}</p>
-                <p>{!post.isPublished && 'Unpublished'}</p>
-              </Link>
-              <button value={post._id} onClick={handlePublish}>Publish/Unpublish</button>
-            </div>
-          )
-       })}
+      {posts.map(post => {
+        return(
+          <div key={post._id}>
+            <Link  to={'/posts/' + post._id}>
+              <h2>{post.title}</h2>
+              <p>{post.text}</p>
+              <p>{post.isPublished && 'Published'}</p>
+              <p>{!post.isPublished && 'Unpublished'}</p>
+            </Link>
+            <button value={post._id} onClick={handlePublish}>Publish/Unpublish</button>
+          </div>
+        )
+      })}
        <Footer/>
     </div>
   );
