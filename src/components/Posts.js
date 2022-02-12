@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import Footer from "./Footer";
 import Header from "./Header";
+import '../styles/Posts.css'
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -51,21 +52,22 @@ const Posts = () => {
   return (
     <div className="Posts">
       <Header/>
-      <h1>Posts</h1>
-      {posts.map(post => {
-        return(
-          <div key={post._id}>
-            <Link  to={'/posts/' + post._id}>
-              <h2>{post.title}</h2>
-              <p>{post.text}</p>
-              <p>{post.isPublished && 'Published'}</p>
-              <p>{!post.isPublished && 'Unpublished'}</p>
-            </Link>
-            <button value={post._id} onClick={handlePublish}>Publish/Unpublish</button>
-          </div>
-        )
-      })}
-       <Footer/>
+      <section className="posts-content">
+        <h1 className="posts-title">Posts</h1>
+        {posts.map(post => {
+          return(
+            <div className="post-link-container" key={post._id}>
+              <Link className="post-link"  to={'/posts/' + post._id}>
+                <h2>{post.title}</h2>
+                <p>{post.isPublished && 'Published'}</p>
+                <p>{!post.isPublished && 'Unpublished'}</p>
+              </Link>
+              <button className="publish-btn" value={post._id} onClick={handlePublish}>Publish/Unpublish</button>
+            </div>
+          )
+        })}
+      </section>
+      <Footer/>
     </div>
   );
 }
