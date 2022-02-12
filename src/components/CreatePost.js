@@ -68,19 +68,19 @@ const CreatePost = () => {
     <div className="CreatePost">
       <Header/>
       <form className="post-form" method="post" onSubmit={handleSubmit}>
-        <div>
-          <label for="title">Post Title: </label>
+        <div className="container">
+          <label htmlFor="title">Post Title: </label>
           <input type="text" value={title} name="title" onChange={handleTitleChange}/>
         </div>
-        <div>
-          <label for="text">Post Text: </label>
+        <div className="container">
+          <label htmlFor="text">Post Text: </label>
           <textarea className="post-text" type="text" value={text} name="text" onChange={handleTextChange}/>
         </div>
-        <div>
-          <label for="published">To be published?: </label>
+        <div className="container">
+          <label htmlFor="published">To be published?: </label>
           <input type="checkbox" value={isPublished} name="published" onChange={handlePublishedChange}/>
         </div>
-        <input type="submit" value="Submit Post"/>
+        <input className="button" type="submit" value="Submit Post"/>
       </form>
       <Footer/>
     </div>
