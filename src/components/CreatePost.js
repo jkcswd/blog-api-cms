@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import Footer from "./Footer";
 import Header from "./Header";
+import '../styles/CreatePost.css'
 
 const CreatePost = () => {
   const user = JSON.parse(localStorage.userDetails)._id;
@@ -66,11 +67,14 @@ const CreatePost = () => {
   return (
     <div className="CreatePost">
       <Header/>
-      <form method="post" onSubmit={handleSubmit}>
+      <form className="post-form" method="post" onSubmit={handleSubmit}>
+        <label for="title">Post Title:</label>
         <input type="text" value={title} name="title" onChange={handleTitleChange}/>
+        <label for="text">Post Text:</label>
         <input type="text" value={text} name="text" onChange={handleTextChange}/>
+        <label for="published">To be published?:</label>
         <input type="checkbox" value={isPublished} name="published" onChange={handlePublishedChange}/>
-        <input type="submit"/>
+        <input type="submit" value="Submit Post"/>
       </form>
       <Footer/>
     </div>
