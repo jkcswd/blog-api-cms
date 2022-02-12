@@ -68,12 +68,18 @@ const CreatePost = () => {
     <div className="CreatePost">
       <Header/>
       <form className="post-form" method="post" onSubmit={handleSubmit}>
-        <label for="title">Post Title:</label>
-        <input type="text" value={title} name="title" onChange={handleTitleChange}/>
-        <label for="text">Post Text:</label>
-        <input type="text" value={text} name="text" onChange={handleTextChange}/>
-        <label for="published">To be published?:</label>
-        <input type="checkbox" value={isPublished} name="published" onChange={handlePublishedChange}/>
+        <div>
+          <label for="title">Post Title:</label>
+          <input type="text" value={title} name="title" onChange={handleTitleChange}/>
+        </div>
+        <div>
+          <label for="text">Post Text:</label>
+          <input type="text" value={text} name="text" onChange={handleTextChange}/>
+        </div>
+        <div>
+          <label for="published">To be published?:</label>
+          <input type="checkbox" value={isPublished} name="published" onChange={handlePublishedChange}/>
+        </div>
         <input type="submit" value="Submit Post"/>
       </form>
       <Footer/>
